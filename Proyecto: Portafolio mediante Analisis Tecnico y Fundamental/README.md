@@ -1,4 +1,4 @@
-# 📈 Portfolio Analysis & Technical Investment Simulation / Análisis de Portafolio y Simulación de Inversión Técnica
+# Portfolio Analysis & Technical Investment Simulation / Análisis de Portafolio y Simulación de Inversión Técnica
 
 ## 🇬🇧 English Description
 
