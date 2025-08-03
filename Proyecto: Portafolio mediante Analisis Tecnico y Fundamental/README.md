@@ -47,6 +47,3 @@ El portafolio se dividió en tres estrategias:
 - `README.md`: Documentación del proyecto.
 
 ---
-
-📌 *Este proyecto es parte de mi portafolio personal y no representa asesoría financiera.*
-
