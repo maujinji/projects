@@ -1,0 +1,14 @@
+Asset,Weight,Portfolio
+Amazon,0.1778,Direccional
+Facebook,0.1758,Direccional
+Netflix,0.3,Direccional
+Disney,0.0186,Direccional
+Microsoft,0.3279,Direccional
+Nvidia,0.5656,Táctico
+Intel,0.1451,Táctico
+Lenovo,0.0761,Táctico
+Nintendo,0.0836,Táctico
+Gitlab,0.1297,Táctico
+iShares MSCI Germany ETF,0.7142857142857143,Pasivo
+iShares MSCI United Kingdom ETF,0.14285714285714285,Pasivo
+iShares MSCI Mexico ETF,0.14285714285714285,Pasivo
