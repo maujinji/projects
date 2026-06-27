@@ -22,7 +22,7 @@ Basado en la investigación de Gidea & Katz (2018), este modelo abandona la pred
 
 ---
 
-## 📊 Resultados y Evidencia Empírica
+##  Resultados y Evidencia Empírica
 
 ### 1. El Radar de Inestabilidad (Norma $L^1$)
 Mientras el mercado opera con normalidad, la topología es ruido disperso (norma cercana a cero). Sin embargo, meses antes de un colapso, el mercado experimenta una transición de fase, generando picos masivos de correlación topológica.
@@ -42,7 +42,7 @@ Los resultados prueban que el pánico topológico es un precursor estadísticame
 
 ---
 
-## ⚙️ Arquitectura del Código
+##  Arquitectura del Código
 
 El pipeline está completamente vectorizado y optimizado para ejecutarse en entornos locales sin colapsos de memoria:
 
@@ -52,19 +52,3 @@ El pipeline está completamente vectorizado y optimizado para ejecutarse en ento
 * `FASE 4:` Análisis estadístico y pruebas de hipótesis con `scipy.stats`.
 
 ---
-
-##  Instalación y Reproducción
-
-Se recomienda encarecidamente ejecutar este proyecto en un entorno virtual con **Python 3.12** para asegurar la compatibilidad de las librerías matemáticas.
-
-```bash
-# 1. Crear entorno virtual (Recomendado)
-py -3.12 -m venv tda_env
-source tda_env/Scripts/activate  # En Windows
-
-# 2. Clonar el repositorio
-git clone [https://github.com/tu-usuario/Topological-Risk-Radar.git](https://github.com/tu-usuario/Topological-Risk-Radar.git)
-cd Topological-Risk-Radar
-
-# 3. Instalar dependencias
-pip install yfinance numpy pandas matplotlib scipy ripser tqdm
