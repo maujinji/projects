@@ -8,7 +8,7 @@ Este repositorio contiene la implementación de un marco cuantitativo avanzado p
 
 El proyecto demuestra empíricamente cómo la geometría subyacente de un mercado multivariado se contrae y pierde dimensionalidad bajo estrés, generando **Señales de Alerta Temprana (EWS)** hasta 250 días antes de colapsos históricos como la Burbuja Dot-com (2000) y la crisis subprime de Lehman Brothers (2008).
 
----
+
 
 ##  El Problema: La Ceguera de la Varianza Tradicional
 Los modelos clásicos de gestión de riesgos asumen distribuciones normales y estacionariedad. En la práctica, los mercados financieros son sistemas dinámicos complejos. Las métricas basadas en momentos estadísticos unidimensionales (como la volatilidad tradicional) a menudo fracasan en capturar el riesgo de cola, disparando sus alarmas únicamente *después* de que el colapso ya ha ocurrido.
@@ -53,7 +53,7 @@ El pipeline está completamente vectorizado y optimizado para ejecutarse en ento
 
 ---
 
-## 🚀 Instalación y Reproducción
+##  Instalación y Reproducción
 
 Se recomienda encarecidamente ejecutar este proyecto en un entorno virtual con **Python 3.12** para asegurar la compatibilidad de las librerías matemáticas.
 
