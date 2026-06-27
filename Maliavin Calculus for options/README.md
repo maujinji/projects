@@ -1,8 +1,7 @@
 # Malliavin Calculus for Option Greeks — Monte Carlo Estimation
 
 **Author:** Mauricio Silva López  
-**Affiliation:** Actuarial Science & Mathematics, UNAM (FES Acatlán / Facultad de Ciencias)  
-**Date:** June 2026
+
 
 ---
 
