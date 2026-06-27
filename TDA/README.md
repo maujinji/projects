@@ -1,4 +1,4 @@
-# 📉 Topological Risk Radar: Detección Temprana de Crisis Financieras mediante TDA
+#  Topological Risk Radar: Detección Temprana de Crisis Financieras mediante TDA
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![Ripser](https://img.shields.io/badge/TDA-Ripser-orange.svg)](https://ripser.scikit-tda.org/)
@@ -10,10 +10,10 @@ El proyecto demuestra empíricamente cómo la geometría subyacente de un mercad
 
 ---
 
-## 🧠 El Problema: La Ceguera de la Varianza Tradicional
+##  El Problema: La Ceguera de la Varianza Tradicional
 Los modelos clásicos de gestión de riesgos asumen distribuciones normales y estacionariedad. En la práctica, los mercados financieros son sistemas dinámicos complejos. Las métricas basadas en momentos estadísticos unidimensionales (como la volatilidad tradicional) a menudo fracasan en capturar el riesgo de cola, disparando sus alarmas únicamente *después* de que el colapso ya ha ocurrido.
 
-## 📐 La Solución Topológica (TDA)
+##  La Solución Topológica (TDA)
 Basado en la investigación de Gidea & Katz (2018), este modelo abandona la predicción binaria a corto plazo y adopta un enfoque geométrico continuo:
 
 1. **Espacios de Fase Multivariados:** En lugar de usar retrasos temporales (Teorema de Takens), construimos nubes de puntos dinámicas en $\mathbb{R}^4$ utilizando los retornos diarios concurrentes del **S&P 500, DJIA, NASDAQ y Russell 2000**.
@@ -27,8 +27,8 @@ Basado en la investigación de Gidea & Katz (2018), este modelo abandona la pred
 ### 1. El Radar de Inestabilidad (Norma $L^1$)
 Mientras el mercado opera con normalidad, la topología es ruido disperso (norma cercana a cero). Sin embargo, meses antes de un colapso, el mercado experimenta una transición de fase, generando picos masivos de correlación topológica.
 
-*(Nota: Agrega aquí la imagen generada de la serie de tiempo dual del S&P 500 vs Norma L1)*
-> `![S&P500 vs L1 Norm](ruta/a/tu/imagen_8df93a.jpg)`
+<img width="1189" height="390" alt="image" src="https://github.com/user-attachments/assets/d77071ba-25cd-4baa-8602-d6b78e08cf2a" />
+
 
 ### 2. Validación Estadística Rigurosa (Mann-Kendall)
 Para evitar los falsos positivos visuales, el algoritmo calcula la **varianza móvil de 500 días** sobre la señal topológica y aplica una prueba no paramétrica de tendencia sobre los **250 días previos** a eventos catastróficos conocidos.
