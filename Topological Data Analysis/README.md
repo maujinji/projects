@@ -2,7 +2,6 @@
 ### Real Market Data Results — Four Original Modules
 
 **Author:** Mauricio Silva López  
-**Affiliation:** Actuarial Science & Mathematics, UNAM (FES Acatlán / Facultad de Ciencias)  
 **Data:** Yahoo Finance — ^GSPC · ^DJI · ^IXIC · ^RUT · ^VIX  
 **Period:** 1995-01-04 → 2011-12-30 (4,281 trading days)
 
