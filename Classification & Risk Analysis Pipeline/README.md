@@ -1,144 +1,219 @@
-# Classification & Risk Analysis Pipeline applied to Lay-off Risk
-### A Multi-Model Showcase with Interpretability and Calibration
+Classification & Risk Analysis Pipeline applied to Lay-off Risk
 
-**Author:** Mauricio Silva López  
-**Affiliation:** Actuarial Science & Mathematics, UNAM (FES Acatlán / Facultad de Ciencias)  
-**Domain:** HR Analytics — AI-Driven Layoff Risk Prediction
+A Multi-Model Showcase with Interpretability and Calibration
 
----
+Author: Mauricio Silva López
 
-## Overview
+Domain: Quantitative Risk Analysis & Data Science | Independent Professional Portfolio
 
-A standardized, reusable, production-grade classification pipeline for tabular
-datasets with binary or multiclass targets. Built around five core principles:
-reusability, traceability, leak-proof preprocessing, model interpretability,
-and probability calibration — not just accuracy.
+Overview
 
-The showcase dataset predicts **AI-driven layoff risk** (Low / Medium / High)
-from employee and role features, but the pipeline is domain-agnostic: swap
-the CSV path and target column to apply it to fraud detection, churn, credit
-default, or any other tabular classification problem.
+A standardized, reusable, production-grade classification pipeline for tabular datasets with binary or multiclass targets. Built around five core principles: reusability, traceability, leak-proof preprocessing, model interpretability, and probability calibration — not just accuracy.
 
----
+The showcase dataset predicts AI-driven layoff risk (Low / Medium / High) from 20,000 employee and role records. The pipeline is domain-agnostic: swap the CSV path and target column to apply it to fraud detection, churn, credit default, or any other tabular classification problem.
 
-## What's inside
+Key Results Summary (Real Data Application)
 
-| Phase | Content |
-|-------|---------|
-| 1 — Setup | Environment configuration |
-| 2 — EDA | Data health diagnostics + visual exploration (missingness, class balance, correlations) |
-| 3 — Preprocessing | Leak-proof `ColumnTransformer` pipeline (median imputation + RobustScaler + OneHotEncoder) |
-| 4 — Theory | Mathematical foundations: Logistic Regression, Random Forest, XGBoost, Stacking |
-| 5 — Benchmarking | 5-fold stratified CV across 5 algorithms |
-| 6 — Evaluation | Confusion matrices, ROC-AUC (OvR), F1, full classification report on held-out test set |
-| 7 — Stacking Ensemble | Meta-learning architecture combining the 3 strongest base learners |
-| 8 — Interpretability | SHAP — beeswarm, bar importance, and individual waterfall explanations |
-| 9 — Calibration | Reliability diagrams + Brier score — does P(risk) actually mean risk? |
-| 10 — Learning Curves | Bias/variance diagnosis across training set size |
+Contrary to the common assumption that complex ensembles always outperform linear models, this dataset revealed a highly linear decision boundary. The simplest model (Logistic Regression) not only achieved the highest out-of-sample accuracy but also yielded the most reliable probability estimates (lowest Brier Score).
 
----
+Model
 
-## Why this is more than a template
+Test Accuracy (Hold-out)
 
-Most classification pipelines stop at cross-validated accuracy. This one adds
-three things that matter specifically for **risk analysis**:
+ROC-AUC (OvR)
 
-1. **Calibration (Phase 9).** A model that says "80% High Risk" should be
-   right 80% of the time. Tree-based models are often poorly calibrated
-   out of the box — this is checked explicitly via reliability diagrams
-   and the Brier score, not assumed.
+Brier Score (Calibration)
 
-2. **Individual-level interpretability (Phase 8).** Beyond global feature
-   importance, the SHAP waterfall plot explains *any single prediction*,
-   which satisfies the "right to explanation" required by many regulatory
-   and compliance frameworks (e.g., GDPR Article 22, internal model risk
-   governance).
+Logistic Regression
 
-3. **Bias/variance diagnosis (Phase 10).** Learning curves distinguish
-   underfitting from overfitting before deciding whether to add complexity,
-   more data, or regularization.
+93.75%
 
----
+0.9939
 
-## Quickstart
+0.0431 (Best)
 
-### Requirements
+Stacking Ensemble
 
-```bash
+92.42%
+
+0.9895
+
+0.0536
+
+Gradient Boosting
+
+91.30%
+
+0.9838
+
+0.0828
+
+XGBoost
+
+90.58%
+
+0.9814
+
+0.0915
+
+Bagging (Deep Trees)
+
+90.53%
+
+0.9819
+
+0.0764
+
+Random Forest
+
+83.08%
+
+0.9558
+
+0.1367 (Worst)
+
+Four Analytical Insights & Modules
+
+Module
+
+Objective
+
+Key Finding
+
+1 — Algorithmic Occam's Razor
+
+Does a Stacking Ensemble outpredict a linear baseline?
+
+No. Logistic Regression achieved 93.86% CV accuracy ($\pm$0.13%), outperforming Random Forest (82.9%) and XGBoost (89.3%). The risk factors are strictly proportional.
+
+2 — Probability Calibration
+
+Can we trust the predicted probabilities?
+
+Yes, but only with specific models. LogReg perfectly hugs the diagonal on the reliability diagram (Brier = 0.043). Random Forest is severely uncalibrated (Brier = 0.136).
+
+3 — SHAP Interpretability
+
+What drives "Medium" or "High" risk predictions at a feature level?
+
+Routine_Task_Percentage and Tasks_Automated_Percentage are the strongest risk drivers. Creativity_Requirement and Job_Level_Senior push probabilities safely toward Low Risk.
+
+4 — Learning Curves
+
+Is the model suffering from high bias or high variance?
+
+LogReg shows a tight fit (Gap: 0.003), proving low variance. XGBoost shows slight overfitting (Gap: 0.045) despite identical training samples.
+
+What's inside
+
+Phase
+
+Content
+
+1 — Setup
+
+Environment configuration.
+
+2 — EDA
+
+Data health diagnostics + visual exploration (missingness, class balance, correlations).
+
+3 — Preprocessing
+
+Leak-proof ColumnTransformer pipeline (median imputation + RobustScaler + OneHotEncoder).
+
+4 — Theory
+
+Mathematical foundations: Logistic Regression, Random Forest, XGBoost, Stacking.
+
+5 — Benchmarking
+
+5-fold stratified CV across 5 algorithms.
+
+6 — Evaluation
+
+Confusion matrices, ROC-AUC (OvR), F1, full classification report on held-out test set.
+
+7 — Stacking Ensemble
+
+Meta-learning architecture combining the 3 strongest base learners.
+
+8 — Interpretability
+
+SHAP — beeswarm, bar importance, and individual waterfall explanations.
+
+9 — Calibration
+
+Reliability diagrams + Brier score — does P(risk) actually mean risk?
+
+10 — Learning Curves
+
+Bias/variance diagnosis across training set size.
+
+Why this is more than a template
+
+Most classification pipelines stop at cross-validated accuracy. This one adds three things that matter specifically for quantitative risk analysis:
+
+Calibration (Phase 9). A model that says "80% High Risk" should be right 80% of the time. Tree-based models are often poorly calibrated out of the box — this is checked explicitly via reliability diagrams and the Brier score, not assumed.
+
+Individual-level interpretability (Phase 8). Beyond global feature importance, the SHAP waterfall plot explains any single prediction (e.g., Test sample #627, P(High) = 0.884), satisfying the "right to explanation" required by regulatory frameworks (e.g., GDPR Article 22, internal model risk governance).
+
+Bias/variance diagnosis (Phase 10). Learning curves distinguish underfitting from overfitting before deciding whether to add complexity, more data, or regularization.
+
+Quickstart
+
+Requirements
+
 pip install pandas numpy matplotlib seaborn scikit-learn xgboost shap
-```
 
-### Run
 
-```bash
+Run
+
 jupyter notebook Pipeline_v3.ipynb
-```
 
-Then **Run All**. The notebook ships with a calibrated synthetic dataset
-generator, so it runs end-to-end with zero configuration.
 
-### Use your own data
+Use your own data
 
 Change two lines in the Phase 2 cell:
 
-```python
-DATA_PATH = r"path/to/your_dataset.csv"   # was: None
+DATA_PATH = r"path/to/your_dataset.csv"   
 TARGET    = "your_target_column"
-```
 
-The pipeline auto-detects numeric vs. categorical columns and routes them
-through the appropriate preprocessing branch.
 
----
+The pipeline auto-detects numeric vs. categorical columns and routes them through the appropriate preprocessing branch.
 
-## Models compared
+Repository structure
 
-| Model | Family | Key property |
-|-------|--------|--------------|
-| Logistic Regression | Linear | Fast, interpretable, well-calibrated baseline |
-| Random Forest | Bagging | Robust to outliers, built-in feature importance |
-| XGBoost | Gradient Boosting | State-of-the-art on tabular data |
-| Bagging (deep trees) | Bagging | Variance reduction |
-| Gradient Boosting | Sequential Boosting | Strong predictor, no missing-value handling |
-| **Stacking Ensemble** | Meta-learning | Combines RF + XGBoost + Bagging via logistic meta-learner |
-
----
-
-## Repository structure
-
-```
 classification-risk-pipeline/
 ├── Pipeline_v3.ipynb      # Main notebook — all 10 phases, fully executable
 ├── README.md              # This file
-└── eda_overview.png       # Saved EDA figure (generated on first run)
-```
+└── figures/
+    ├── eda_overview.png   # EDA, correlation heatmaps, and target distributions
+    ├── benchmarking.png   # CV stability boxplots
+    ├── confusion_mat.png  # Confusion matrices for all models
+    ├── roc_curves.png     # One-vs-Rest ROC-AUC 
+    ├── shap_summary.png   # SHAP beeswarm & feature importance
+    ├── shap_waterfall.png # Local explainability for individual predictions
+    ├── calibration.png    # Reliability diagrams and Brier scores
+    └── learning_curve.png # Bias-variance trade-off visualization
 
----
 
-## Design principles
+Design principles
 
-- **No data leakage** — all transformations (imputation, scaling, encoding)
-  are fitted exclusively on training data inside a `sklearn.Pipeline`.
-- **Stratified splits** — class balance is preserved across train/test and
-  every CV fold via `stratify=y` and `StratifiedKFold`.
-- **Reproducibility** — `random_state=42` fixed throughout.
-- **Reusability** — domain-agnostic; works on any binary or multiclass
-  tabular classification problem.
+No data leakage — all transformations (imputation, scaling, encoding) are fitted exclusively on training data inside a sklearn.Pipeline.
 
----
+Stratified splits — class balance is preserved across train/test and every CV fold via stratify=y and StratifiedKFold.
 
-## References
+Reproducibility — random_state=42 fixed throughout.
 
-1. Lundberg, S.M. & Lee, S.I. (2017). *A Unified Approach to Interpreting
-   Model Predictions*. NeurIPS.
-2. Chen, T. & Guestrin, C. (2016). *XGBoost: A Scalable Tree Boosting System*.
-   KDD.
-3. Wolpert, D.H. (1992). *Stacked generalization*. Neural Networks.
-4. Niculescu-Mizil, A. & Caruana, R. (2005). *Predicting Good Probabilities
-   with Supervised Learning*. ICML.
+Reusability — domain-agnostic; works on any binary or multiclass tabular classification problem.
 
----
+References
 
-## License
+Lundberg, S.M. & Lee, S.I. (2017). A Unified Approach to Interpreting Model Predictions. NeurIPS.
 
-MIT.
+Chen, T. & Guestrin, C. (2016). XGBoost: A Scalable Tree Boosting System. KDD.
+
+Wolpert, D.H. (1992). Stacked generalization. Neural Networks.
+
+Niculescu-Mizil, A. & Caruana, R. (2005). Predicting Good Probabilities with Supervised Learning. ICML.
