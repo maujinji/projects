@@ -1,4 +1,4 @@
-# Classification & Risk Analysis Pipeline
+# Classification & Risk Analysis Pipeline applied to Lay-off Risk
 ### A Multi-Model Showcase with Interpretability and Calibration
 
 **Author:** Mauricio Silva López  
